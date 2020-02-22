@@ -1,0 +1,1 @@
+# Discord Emoji Log Bot
