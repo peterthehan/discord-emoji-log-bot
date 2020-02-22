@@ -5,7 +5,10 @@
   "keywords": [
     "discord",
     "bot",
-    "discord-bot"
+    "discord-bot",
+    "emoji",
+    "log",
+    "statistics"
   ],
   "homepage": "https://github.com/peterthehan/discord-emoji-log-bot",
   "bugs": {
@@ -30,6 +33,7 @@
   },
   "dependencies": {
     "discord.js": "github:discordjs/discord.js#master",
+    "emoji-regex": "^8.0.0",
     "google-spreadsheet": "^3.0.8"
   }
 }
