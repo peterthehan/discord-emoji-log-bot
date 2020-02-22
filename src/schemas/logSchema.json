@@ -1,0 +1,15 @@
+{
+  "logs": [
+    "emojiId",
+    "userId",
+    "channelId",
+    "guildId",
+    "isReaction",
+    "isAnimated",
+    "timestamp"
+  ],
+  "emojis": ["id", "name"],
+  "users": ["id", "name"],
+  "channels": ["id", "name"],
+  "guilds": ["id", "name"]
+}
