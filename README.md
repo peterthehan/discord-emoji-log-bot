@@ -38,7 +38,7 @@ guildChannelMap: {
 }
 ```
 
-> `sheetId` is the ID of the Google Sheets document found in the URL: `https://docs.google.com/spreadsheets/d/SHEET_ID_FOUND_HERE/edit`. If you don't have or care for a `production` and `development` environment, set them to the same value.
+> `sheetId` is the ID of the Google Sheets document found in the URL: [https://docs.google.com/spreadsheets/d/SHEET_ID_FOUND_HERE/edit](https://docs.google.com/spreadsheets/d/SHEET_ID_FOUND_HERE/edit). If you don't have or care for a `production` and `development` environment, set them to the same value.
 
 > `channelsToIgnore` are the channels the bot will not log user emoji usage from.
 
