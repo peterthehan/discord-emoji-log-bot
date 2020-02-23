@@ -4,7 +4,7 @@ A Discord bot that logs user emoji usage.
 
 ## Google Sheets Setup
 
-> Be aware that while the Google Sheets API has a free tier, it has limits in place. You can read more about the limits [here](https://developers.google.com/sheets/api/limits).
+> Be aware that while the Google Sheets API has a free tier, it has limits in place. You can read more about the API limits [here](https://developers.google.com/sheets/api/limits) and the document limits [here](https://support.google.com/drive/answer/37603).
 
 1. Follow the [setup instructions](https://theoephraim.github.io/node-google-spreadsheet/#/getting-started/authentication?id=service-account) found in the project [google-spreadsheet](https://github.com/theoephraim/node-google-spreadsheet) to create a Google Sheets API Service Account.
 
