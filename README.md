@@ -27,7 +27,9 @@ A Discord bot that logs user emoji usage.
 2. Open [src/config.js](https://github.com/peterthehan/discord-emoji-log-bot/blob/master/src/config.js) to configure your own settings:
 
 ```js
-sheetId: 'SHEET_ID',
+sheetId: isProduction
+  ? 'PRODUCTION_SHEET_ID'
+  : 'DEVELOPMENT_SHEET_ID',
 guildChannelMap: {
   'GUILD_1_ID': {
     channelsToIgnore: ['TEXT_CHANNEL_1_ID', 'TEXT_CHANNEL_2_ID']
@@ -36,7 +38,7 @@ guildChannelMap: {
 }
 ```
 
-> `sheetId` is the ID of the Google Sheets document found in the URL: `https://docs.google.com/spreadsheets/d/SHEET_ID_FOUND_HERE/edit`
+> `sheetId` is the ID of the Google Sheets document found in the URL: `https://docs.google.com/spreadsheets/d/SHEET_ID_FOUND_HERE/edit`. If you don't have or care for a `production` and `development` environment, set them to the same value.
 
 > `channelsToIgnore` are the channels the bot will not log user emoji usage from.
 
