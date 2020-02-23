@@ -10,9 +10,7 @@ A Discord bot that logs user emoji usage.
 
 1. Follow the [setup instructions](https://theoephraim.github.io/node-google-spreadsheet/#/getting-started/authentication?id=service-account) found in the project [google-spreadsheet](https://github.com/theoephraim/node-google-spreadsheet) to create a Google Sheets API Service Account.
 
-> Take note of the client email associated with the Service Account.
-
-> You will have downloaded a credentials JSON file after following through the instructions. You will need this in the next section.
+> Take note of the client email associated with the Service Account. Additionally, you will have downloaded a credentials JSON file after following through the instructions. You will need these in the next section.
 
 2. Create a Google Sheets document in your Google Drive.
 
