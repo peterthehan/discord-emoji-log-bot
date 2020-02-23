@@ -23,7 +23,7 @@
     "url": "https://github.com/peterthehan"
   },
   "bin": {
-    "discord-emoji-log-bot": "./src/index.js"
+    "emoji-log": "./src/index.js"
   },
   "repository": {
     "type": "git",
