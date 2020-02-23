@@ -2,9 +2,11 @@
 
 A Discord bot that logs user emoji usage.
 
-## Google Sheets Setup
-
 > Be aware that while the Google Sheets API has a free tier, it has limits in place. You can read more about the API limits [here](https://developers.google.com/sheets/api/limits) and the document limits [here](https://support.google.com/drive/answer/37603).
+
+> Given that a Google Sheets document supports up to 5000000 cells and the main `logs` table has 7 columns, that gives us appromixately 700000 rows. If we assume a rate of 500 logs per day, that gives us 1400 days = approximately 3.8 years before we have to consider archiving rows.
+
+## Google Sheets Setup
 
 1. Follow the [setup instructions](https://theoephraim.github.io/node-google-spreadsheet/#/getting-started/authentication?id=service-account) found in the project [google-spreadsheet](https://github.com/theoephraim/node-google-spreadsheet) to create a Google Sheets API Service Account.
 
