@@ -15,8 +15,8 @@ const updateJoinData = async (row, joinData) => {
 
 module.exports = {
   initializeSheet: async (title, headers) => {
-    const { document } = await getDocumentAndSheet(title);
-    if (!document) return;
+    const { document, sheet } = await getDocumentAndSheet(title);
+    if (!document || sheet) return;
 
     const newSheet = await document.addSheet({ title });
     newSheet.setHeaderRow(headers);
