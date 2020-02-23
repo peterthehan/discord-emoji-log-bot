@@ -16,10 +16,13 @@ const updateJoinData = async (row, joinData) => {
 module.exports = {
   initializeSheet: async (title, headers) => {
     const { document, sheet } = await getDocumentAndSheet(title);
-    if (!document || sheet) return;
+    if (!document) return;
 
-    const newSheet = await document.addSheet({ title });
-    newSheet.setHeaderRow(headers);
+    if (!sheet) {
+      await document.addSheet({ title, headers });
+    } else {
+      sheet.setHeaderRow(headers);
+    }
   },
   addLogs: async logs => {
     const { sheet } = await getDocumentAndSheet('logs');
