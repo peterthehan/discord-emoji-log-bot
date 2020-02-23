@@ -19,7 +19,11 @@ module.exports = {
     if (!document) return;
 
     if (!sheet) {
-      await document.addSheet({ title, headers });
+      await document.addSheet({
+        title,
+        headers,
+        gridProperties: { columnCount: headers.length }
+      });
     } else {
       sheet.setHeaderRow(headers);
     }
