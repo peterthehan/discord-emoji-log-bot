@@ -1,23 +1,17 @@
 module.exports = class JoinDataBuilder {
   constructor() {
-    this.id = null;
-    this.name = null;
+    this.joinData = null;
   }
 
-  setId(id) {
-    this.id = id;
-    return this;
-  }
-
-  setName(name) {
-    this.name = name;
+  setJoinData(joinData) {
+    this.joinData = joinData;
     return this;
   }
 
   build() {
     return {
-      id: this.id,
-      name: this.name
+      id: this.joinData.id,
+      name: this.joinData.name
     };
   }
 };

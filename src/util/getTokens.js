@@ -4,18 +4,13 @@ const tokenRegExps = {
   discordEmoji: /<a?:[a-zA-Z0-9_]+:(\d+)>/g,
   defaultEmoji: new RegExp(`(${emojiRegExp.source})`, 'g')
 };
-const tokens = Object.keys(tokenRegExps);
 
-module.exports = (string, tokensToExtract = tokens) => {
+module.exports = (string, tokensToExtract = Object.keys(tokenRegExps)) => {
   const extractedTokens = [];
   for (const token of tokensToExtract) {
     let match;
     while ((match = tokenRegExps[token].exec(string))) {
-      extractedTokens.push({
-        type: token,
-        id: match[1],
-        text: match[0]
-      });
+      extractedTokens.push({ type: token, id: match[1], text: match[0] });
     }
   }
 

@@ -2,8 +2,7 @@ module.exports = class LogBuilder {
   constructor() {
     this.emojiId = null;
     this.userId = null;
-    this.channelId = null;
-    this.guildId = null;
+    this.channel = null;
     this.isReaction = null;
     this.isAnimated = null;
     this.timestamp = null;
@@ -19,23 +18,13 @@ module.exports = class LogBuilder {
     return this;
   }
 
-  setChannelId(channelId) {
-    this.channelId = channelId;
+  setChannel(channel) {
+    this.channel = channel;
     return this;
   }
 
-  setGuildId(guildId) {
-    this.guildId = guildId;
-    return this;
-  }
-
-  isReactionEmoji() {
-    this.isReaction = true;
-    return this;
-  }
-
-  isMessageEmoji() {
-    this.isReaction = false;
+  setIsReaction(isReaction) {
+    this.isReaction = isReaction;
     return this;
   }
 
@@ -53,8 +42,8 @@ module.exports = class LogBuilder {
     return {
       emojiId: this.emojiId,
       userId: this.userId,
-      channelId: this.channelId,
-      guildId: this.guildId,
+      channelId: this.channel.id,
+      guildId: this.channel.guild.id,
       isReaction: this.isReaction,
       isAnimated: this.isAnimated,
       timestamp: this.timestamp

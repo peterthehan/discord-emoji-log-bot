@@ -1,50 +1,42 @@
-const logSchema = require('../schemas/logSchema');
-const getDocument = require('../util/getDocument');
+const getDocumentAndSheet = require('../util/getDocumentAndSheet');
 const joinDataMapper = require('../util/joinDataMapper');
 const logMapper = require('../util/logMapper');
 
-const findSheet = (document, title) =>
-  document.sheetsByIndex.find(sheet => sheet.title === title);
+const addJoinData = async (sheet, joinData) => {
+  sheet.addRow(joinData);
+};
+
+const updateJoinData = async (row, joinData) => {
+  if (row.name === joinData.name) return;
+
+  row.name = joinData.name;
+  row.save();
+};
 
 module.exports = {
-  initializeDocument: async () => {
-    const document = await getDocument();
+  initializeSheet: async (title, headers) => {
+    const { document } = await getDocumentAndSheet(title);
+    if (!document) return;
 
-    Object.keys(logSchema)
-      .filter(title => !findSheet(document, title))
-      .forEach(async title => {
-        const headers = logSchema[title];
-        const newSheet = await document.addSheet({ title });
-        newSheet.setHeaderRow(headers);
-      });
+    const newSheet = await document.addSheet({ title });
+    newSheet.setHeaderRow(headers);
   },
   addLogs: async logs => {
-    const document = await getDocument();
-    const sheet = findSheet(document, 'logs');
+    const { sheet } = await getDocumentAndSheet('logs');
+    if (!sheet) return;
 
     sheet.addRows(logs.map(logMapper));
   },
-  upsertJoinData: async joinData => {
-    const document = await getDocument();
-    if (!document) return;
-
-    const sheet = findSheet(document, Object.keys(joinData)[0]);
+  upsertJoinData: async ({ title, joinData }) => {
+    const { sheet } = await getDocumentAndSheet(title);
     if (!sheet) return;
 
     const rows = await sheet.getRows();
-
-    console.log(rows);
-    Object.values(joinData)[0].forEach(async data => {
-      const row = rows.find(row => row.id === data.id);
-      if (!row) {
-        await sheet.addRow(joinDataMapper(data));
-        return;
-      }
-
-      if (row.name === data.name) return;
-
-      row.name = data.name;
-      await row.save();
-    });
+    const row = rows.find(row => row.id === joinData.id);
+    if (!row) {
+      addJoinData(sheet, joinDataMapper(joinData));
+    } else {
+      updateJoinData(row, joinData);
+    }
   }
 };

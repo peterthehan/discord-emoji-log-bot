@@ -7,7 +7,11 @@ module.exports = {
           private_key: process.env.PRIVATE_KEY
         }
       : require('../credentials'),
+  events: ['message', 'messageReactionAdd'],
   sheetId: '1CrvJ3Zuec5F7dF5ez_nPOJ5auZVfPrXz_W8GG2o0PZM',
-  owners: ['206161807491072000'],
-  events: ['message', 'messageReactionAdd']
+  guildChannelMap: {
+    '258167954913361930': {
+      channelsToIgnore: []
+    }
+  }
 };
