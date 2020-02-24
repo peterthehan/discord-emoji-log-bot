@@ -11,29 +11,15 @@ module.exports = (message, tokens) => {
   const callbacks = [
     ...emojiIds.map(emojiId => {
       const emoji = message.channel.guild.emojis.resolve(emojiId);
-      return {
-        title: 'emojis',
-        joinData: {
-          id: emojiId,
-          name: emoji.name,
-          dateCreated: emoji.createdAt
-        }
-      };
+      return { title: 'emojis', joinData: { id: emojiId, name: emoji.name } };
     }),
     {
       title: 'users',
-      joinData: {
-        id: message.author.id,
-        name: message.author.tag,
-        dateJoined: message.member.joinedAt
-      }
+      joinData: { id: message.author.id, name: message.author.tag }
     },
     {
       title: 'channels',
-      joinData: {
-        id: message.channel.id,
-        name: message.channel.name
-      }
+      joinData: { id: message.channel.id, name: message.channel.name }
     },
     {
       title: 'guilds',
