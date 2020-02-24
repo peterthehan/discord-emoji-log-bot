@@ -1,18 +1,23 @@
 const { upsertJoinData } = require('../repositories/logRepository');
 const serializer = require('../util/serializer');
 
-const filterDuplicates = array => [...new Set(array)];
+const getUniqueEmojiIds = (tokens, type) => [
+  ...new Set(tokens.filter(token => token.type === type).map(token => token.id))
+];
 
 module.exports = (message, tokens) => {
-  const emojiIds = filterDuplicates(
-    tokens.filter(token => token.type === 'discordEmoji').map(token => token.id)
-  );
-
   const callbacks = [
-    ...emojiIds.map(emojiId => {
-      const emoji = message.channel.guild.emojis.resolve(emojiId);
-      return { title: 'emojis', joinData: { id: emojiId, name: emoji.name } };
-    }),
+    ...getUniqueEmojiIds(tokens, 'discordEmoji').map(emojiId => ({
+      title: 'emojis',
+      joinData: {
+        id: emojiId,
+        name: message.channel.guild.emojis.resolve(emojiId).name
+      }
+    })),
+    ...getUniqueEmojiIds(tokens, 'defaultEmoji').map(emojiId => ({
+      title: 'emojis',
+      joinData: { id: emojiId, name: emojiId }
+    })),
     {
       title: 'users',
       joinData: { id: message.author.id, name: message.author.tag }
