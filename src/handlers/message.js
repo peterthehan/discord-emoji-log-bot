@@ -1,14 +1,14 @@
-const addLogsHelper = require('../util/addLogsHelper');
+const addLogsHelper = require('../helpers/addLogsHelper');
+const upsertJoinDataHelper = require('../helpers/upsertJoinDataHelper');
 const getTokens = require('../util/getTokens');
-const shouldLogValidator = require('../util/shouldLogValidator');
-const upsertJoinDataHelper = require('../util/upsertJoinDataHelper');
+const isLoggable = require('../util/isLoggable');
+const isValidEmoji = require('../util/isValidEmoji');
 
 module.exports = async message => {
-  if (!shouldLogValidator(message)) return;
+  if (!isLoggable(message)) return;
 
-  const tokens = getTokens(message.content).filter(
-    token =>
-      token.type === 'defaultEmoji' || message.guild.emojis.resolve(token.id)
+  const tokens = getTokens(message.content).filter(token =>
+    isValidEmoji(message, token)
   );
   if (!tokens.length) return;
 

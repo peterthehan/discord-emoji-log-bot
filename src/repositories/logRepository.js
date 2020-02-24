@@ -1,6 +1,6 @@
 const getDocumentAndSheet = require('../util/getDocumentAndSheet');
-const joinDataMapper = require('../util/joinDataMapper');
-const logMapper = require('../util/logMapper');
+const joinDataMapper = require('../mappers/joinDataMapper');
+const logMapper = require('../mappers/logMapper');
 
 const addJoinData = async (sheet, joinData) => {
   sheet.addRow(joinData);

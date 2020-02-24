@@ -8,8 +8,8 @@
     "isAnimated",
     "timestamp"
   ],
-  "emojis": ["id", "name"],
-  "users": ["id", "name"],
+  "emojis": ["id", "name", "dateCreated"],
+  "users": ["id", "name", "dateJoined"],
   "channels": ["id", "name"],
   "guilds": ["id", "name"]
 }
