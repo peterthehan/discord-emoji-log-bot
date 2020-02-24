@@ -3,23 +3,23 @@ const serializer = require('../util/serializer');
 
 const filterDuplicates = array => [...new Set(array)];
 
-module.exports = async (message, tokens) => {
+module.exports = (message, tokens) => {
+  const emojiIds = filterDuplicates(
+    tokens.filter(token => token.type === 'discordEmoji').map(token => token.id)
+  );
+
   const callbacks = [
-    ...filterDuplicates(
-      tokens
-        .filter(token => token.type === 'discordEmoji')
-        .map(token => {
-          const emoji = message.channel.guild.emojis.resolve(token.id);
-          return {
-            title: 'emojis',
-            joinData: {
-              id: token.id,
-              name: emoji.name,
-              dateCreated: emoji.createdAt
-            }
-          };
-        })
-    ),
+    ...emojiIds.map(emojiId => {
+      const emoji = message.channel.guild.emojis.resolve(emojiId);
+      return {
+        title: 'emojis',
+        joinData: {
+          id: emojiId,
+          name: emoji.name,
+          dateCreated: emoji.createdAt
+        }
+      };
+    }),
     {
       title: 'users',
       joinData: {
@@ -42,9 +42,7 @@ module.exports = async (message, tokens) => {
         name: message.channel.guild.name
       }
     }
-  ].map(({ title, joinData }) => async () =>
-    upsertJoinData({ title, joinData })
-  );
+  ].map(joinData => async () => upsertJoinData(joinData));
 
   serializer(callbacks);
 };

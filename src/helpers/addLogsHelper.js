@@ -1,6 +1,6 @@
 const { addLogs } = require('../repositories/logRepository');
 
-module.exports = async (message, tokens, isReaction) => {
+module.exports = (message, tokens, isReaction) => {
   const sharedLog = {
     userId: message.author.id,
     channelId: message.channel.id,
