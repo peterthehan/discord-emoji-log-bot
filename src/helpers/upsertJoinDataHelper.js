@@ -24,7 +24,11 @@ module.exports = (message, tokens) => {
     },
     {
       title: 'channels',
-      joinData: { id: message.channel.id, name: message.channel.name }
+      joinData: {
+        id: message.channel.id,
+        name: message.channel.name,
+        guildId: message.channel.guild.id
+      }
     },
     {
       title: 'guilds',
