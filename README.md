@@ -4,7 +4,7 @@ A Discord bot that logs user emoji usage.
 
 > Be aware that while the Google Sheets API has a free tier, it has limits in place. You can read more about the API limits [here](https://developers.google.com/sheets/api/limits) and the document limits [here](https://support.google.com/drive/answer/37603).
 
-> Given that a Google Sheets document supports up to 5000000 cells and the main `logs` table has 6 columns, that gives us appromixately 830000 rows. If we assume a rate of 500 logs per day, that gives us approximately 4.6 years before we have to consider archiving rows.
+> Given that a Google Sheets document supports up to 5000000 cells and the main `logs` table has 6 columns, that gives us appromixately 1000000 rows. If we assume a rate of 500 logs per day, that gives us approximately 5.5 years before we have to consider archiving rows.
 
 ## Google Sheets Setup
 
