@@ -5,10 +5,9 @@
     "channelId",
     "guildId",
     "isReaction",
-    "isAnimated",
     "timestamp"
   ],
-  "emojis": ["id", "name"],
+  "emojis": ["id", "name", "isAnimated"],
   "users": ["id", "name"],
   "channels": ["id", "name"],
   "guilds": ["id", "name"]

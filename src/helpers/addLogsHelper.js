@@ -8,13 +8,7 @@ module.exports = (message, tokens, isReaction) => {
     isReaction,
     timestamp: new Date()
   };
-  const logs = tokens.map(token => ({
-    ...sharedLog,
-    emojiId: token.id,
-    isAnimated:
-      token.type === 'discordEmoji' &&
-      message.channel.guild.emojis.resolve(token.id).animated
-  }));
+  const logs = tokens.map(token => ({ ...sharedLog, emojiId: token.id }));
 
   addLogs(logs);
 };

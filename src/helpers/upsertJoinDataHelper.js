@@ -7,16 +7,16 @@ const getUniqueEmojiIds = (tokens, type) => [
 
 module.exports = (message, tokens) => {
   const callbacks = [
-    ...getUniqueEmojiIds(tokens, 'discordEmoji').map(emojiId => ({
-      title: 'emojis',
-      joinData: {
-        id: emojiId,
-        name: message.channel.guild.emojis.resolve(emojiId).name
-      }
-    })),
+    ...getUniqueEmojiIds(tokens, 'discordEmoji').map(emojiId => {
+      const emoji = message.channel.guild.emojis.resolve(emojiId);
+      return {
+        title: 'emojis',
+        joinData: { id: emojiId, name: emoji.name, isAnimated: emoji.animated }
+      };
+    }),
     ...getUniqueEmojiIds(tokens, 'defaultEmoji').map(emojiId => ({
       title: 'emojis',
-      joinData: { id: emojiId, name: emojiId }
+      joinData: { id: emojiId, name: emojiId, isAnimated: false }
     })),
     {
       title: 'users',
