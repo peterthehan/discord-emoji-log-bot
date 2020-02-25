@@ -1,6 +1,5 @@
-const joinDataMapper = require('../mappers/joinDataMapper');
-const logMapper = require('../mappers/logMapper');
 const getDocumentAndSheet = require('../util/getDocumentAndSheet');
+const rowMapper = require('../util/rowMapper');
 
 const addJoinData = async (sheet, joinData) => {
   sheet.addRow(joinData);
@@ -32,7 +31,7 @@ module.exports = {
     const { sheet } = await getDocumentAndSheet('logs');
     if (!sheet) return;
 
-    sheet.addRows(logs.map(logMapper));
+    sheet.addRows(logs.map(rowMapper));
   },
   upsertJoinData: async ({ title, joinData }) => {
     const { sheet } = await getDocumentAndSheet(title);
@@ -41,7 +40,7 @@ module.exports = {
     const rows = await sheet.getRows();
     const row = rows.find(row => row.id === joinData.id);
     if (!row) {
-      addJoinData(sheet, joinDataMapper(joinData));
+      addJoinData(sheet, rowMapper(joinData));
     } else {
       updateJoinData(row, joinData);
     }
