@@ -20,13 +20,15 @@ A Discord bot that logs user emoji usage.
 
 ## Setup
 
-1. Adapt and follow the steps found in [create-discord-bot](https://github.com/peterthehan/create-discord-bot).
-
-> Follow the [Create Bot](https://github.com/peterthehan/create-discord-bot#create-bot) and [Get Bot](https://github.com/peterthehan/create-discord-bot#get-bot) sections. Remember to replace with the correct project name in step 1 of the [Get Bot](https://github.com/peterthehan/create-discord-bot#get-bot) section!
+1. Follow the instructions in [create-discord-bot](https://github.com/peterthehan/create-discord-bot).
 
 2. Move the credentials JSON file downloaded from the previous section to the root of the project folder and rename it to `credentials.json`.
 
-3. Open [src/config.js](https://github.com/peterthehan/discord-emoji-log-bot/blob/master/src/config.js) to configure your own settings:
+3. Download this widget and move it into the [src/widgets](https://github.com/peterthehan/create-discord-bot/blob/master/src/widgets/) folder.
+
+> `npm i -s emoji-regex@^4.0.1 google-spreadsheet@^3.0.8` to install this widget's dependencies.
+
+4. Open [config.js](https://github.com/peterthehan/discord-emoji-log-bot/blob/master/config.js) to configure your own settings:
 
 ```js
 sheetId: isProduction
