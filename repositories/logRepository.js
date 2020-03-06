@@ -1,15 +1,16 @@
 const getDocumentAndSheet = require('../util/getDocumentAndSheet');
+const retry = require('../util/retry');
 const rowMapper = require('../util/rowMapper');
 
 const addJoinData = async (sheet, joinData) => {
-  sheet.addRow(joinData);
+  retry(async () => sheet.addRow(joinData));
 };
 
 const updateJoinData = async (row, joinData) => {
   if (row.name === joinData.name) return;
 
   row.name = joinData.name;
-  row.save();
+  retry(async () => row.save());
 };
 
 module.exports = {
@@ -31,7 +32,7 @@ module.exports = {
     const { sheet } = await getDocumentAndSheet('logs');
     if (!sheet) return;
 
-    sheet.addRows(logs.map(rowMapper));
+    retry(async () => sheet.addRows(logs.map(rowMapper)));
   },
   upsertJoinData: async ({ title, joinData }) => {
     const { sheet } = await getDocumentAndSheet(title);
