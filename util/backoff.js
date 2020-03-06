@@ -2,7 +2,7 @@ const MAX_RETRIES = 5;
 const MAX_DELAY = 16000;
 const DEFAULT_DELAY = 1000;
 
-const pause = async duration =>
+const sleep = async duration =>
   new Promise(resolve => setTimeout(resolve, duration));
 
 const backoff = async (
@@ -15,7 +15,7 @@ const backoff = async (
       return Promise.reject(error);
     }
 
-    return pause(delay).then(() =>
+    return sleep(delay).then(() =>
       backoff(callback, retries - 1, Math.min(delay * 2, MAX_DELAY))
     );
   });
