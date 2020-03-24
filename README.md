@@ -49,7 +49,7 @@ guildChannelMap: {
 ## Design
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/peterthehan/discord-emoji-log-bot/master/assets/schema.png" />
+  <img src="https://raw.githubusercontent.com/peterthehan/assets/master/repositories/discord-emoji-log-bot/schema.png" />
 </div>
 
 Visit for more help or information!
