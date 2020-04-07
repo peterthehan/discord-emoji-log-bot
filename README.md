@@ -1,5 +1,7 @@
 # Discord Emoji Log Bot
 
+[![Discord](https://discordapp.com/api/guilds/258167954913361930/embed.png)](https://discord.gg/WjEFnzC) [![Ko-fi](https://img.shields.io/badge/donate-Ko--fi-29ABE0.svg)](https://ko-fi.com/peterthehan) [![Patreon](https://img.shields.io/badge/donate-Patreon-F96854.svg)](https://www.patreon.com/bePatron?u=33175931) [![Twitter Follow](https://img.shields.io/twitter/follow/peterthehan.svg?style=social)](https://twitter.com/peterthehan)
+
 A Discord bot that logs user emoji usage.
 
 > Be aware that while the Google Sheets API has a free tier, it has limits in place. You can read more about the API limits [here](https://developers.google.com/sheets/api/limits) and the document limits [here](https://support.google.com/drive/answer/37603).
