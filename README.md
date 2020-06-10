@@ -26,7 +26,7 @@ A Discord bot that logs user emoji usage.
 
 2. Move the credentials JSON file downloaded from the previous section to the root of the project folder and rename it to `credentials.json`.
 
-3. Download this widget and move it into the [src/widgets](https://github.com/peterthehan/create-discord-bot/blob/master/src/widgets/) folder.
+3. Download this widget and add it into the [src/widgets](https://github.com/peterthehan/create-discord-bot/tree/master/app/src/widgets) folder.
 
 > `npm i -s emoji-regex@^9.0.0 google-spreadsheet@^3.0.11` to install this widget's dependencies.
 
