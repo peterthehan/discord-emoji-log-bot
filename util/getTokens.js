@@ -1,8 +1,8 @@
-const emojiRegExp = require('emoji-regex')();
+const emojiRegExp = require("emoji-regex")();
 
 const tokenRegExps = {
   discordEmoji: /<a?:[a-zA-Z0-9_]+:(\d+)>/g,
-  defaultEmoji: new RegExp(`(${emojiRegExp.source})`, 'g')
+  defaultEmoji: new RegExp(`(${emojiRegExp.source})`, "g"),
 };
 
 module.exports = (string, tokensToExtract = Object.keys(tokenRegExps)) => {

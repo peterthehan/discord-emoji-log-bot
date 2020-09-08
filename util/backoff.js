@@ -2,15 +2,15 @@ const MAX_RETRIES = 5;
 const MAX_DELAY = 16000;
 const DEFAULT_DELAY = 1000;
 
-const sleep = async duration =>
-  new Promise(resolve => setTimeout(resolve, duration));
+const sleep = async (duration) =>
+  new Promise((resolve) => setTimeout(resolve, duration));
 
 const backoff = async (
   callback,
   retries = MAX_RETRIES,
   delay = DEFAULT_DELAY
 ) =>
-  callback().catch(error => {
+  callback().catch((error) => {
     if (!retries) {
       return Promise.reject(error);
     }
