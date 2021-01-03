@@ -24,7 +24,12 @@ A Discord bot that logs user emoji usage.
 
 1. Follow the instructions in [create-discord-bot](https://github.com/peterthehan/create-discord-bot).
 
-2. Move the credentials JSON file downloaded from the previous section to the root of the project folder and rename it to `credentials.json`.
+2. Copy the `client_email` and `private_key` values in the credentials JSON file into your `.env` file:
+
+```
+CLIENT_EMAIL=client_email_value_here
+PRIVATE_KEY=private_key_value_here
+```
 
 3. Download this widget and add it into the [src/widgets](https://github.com/peterthehan/create-discord-bot/tree/master/app/src/widgets) folder.
 
@@ -32,10 +37,8 @@ A Discord bot that logs user emoji usage.
 
 4. Open [config.js](https://github.com/peterthehan/discord-emoji-log-bot/blob/master/config.js) to configure your own settings:
 
-```js
-sheetId: isProduction
-  ? 'PRODUCTION_SHEET_ID'
-  : 'DEVELOPMENT_SHEET_ID',
+```
+sheetId: "SHEET_ID",
 guildChannelMap: {
   'GUILD_1_ID': {
     channelsToIgnore: ['TEXT_CHANNEL_1_ID', 'TEXT_CHANNEL_2_ID']
@@ -44,7 +47,7 @@ guildChannelMap: {
 }
 ```
 
-- `sheetId` is the ID of the Google Sheets document found in the URL: [https://docs.google.com/spreadsheets/d/SHEET_ID_FOUND_HERE/edit](https://docs.google.com/spreadsheets/d/SHEET_ID_FOUND_HERE/edit). If you don't have or care for a `production` and `development` environment, set them to the same value.
+- `sheetId` is the ID of the Google Sheets document found in the URL: [https://docs.google.com/spreadsheets/d/SHEET_ID_FOUND_HERE/edit](https://docs.google.com/spreadsheets/d/SHEET_ID_FOUND_HERE/edit).
 
 - `channelsToIgnore` are the channels the bot will not log user emoji usage from.
 
