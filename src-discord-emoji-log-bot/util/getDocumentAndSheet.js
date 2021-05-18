@@ -1,12 +1,15 @@
 const { GoogleSpreadsheet } = require("google-spreadsheet");
-const { credentials, sheetId } = require("../config");
+const { sheetId } = require("../config");
 
 const documentCache = {};
 
 module.exports = async (title) => {
   if (!(sheetId in documentCache)) {
     const document = new GoogleSpreadsheet(sheetId);
-    await document.useServiceAccountAuth(credentials);
+    await document.useServiceAccountAuth({
+      client_email: process.env.CLIENT_EMAIL,
+      private_key: process.env.PRIVATE_KEY,
+    });
     await document.loadInfo();
     if (!document) {
       return {};

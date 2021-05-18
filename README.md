@@ -12,13 +12,13 @@ A Discord bot that logs user emoji usage.
 
 1. Follow the [setup instructions](https://theoephraim.github.io/node-google-spreadsheet/#/getting-started/authentication?id=service-account) found in the project [google-spreadsheet](https://github.com/theoephraim/node-google-spreadsheet) to create a Google Sheets API Service Account.
 
-> Take note of the client email associated with the Service Account. Additionally, you will have downloaded a credentials JSON file after following through the instructions. You will need these in the next section.
+   > Take note of the client email associated with the Service Account. Additionally, you will have downloaded a credentials JSON file after following through the instructions. You will need these in the next section.
 
 2. Create a Google Sheets document in your Google Drive.
 
 3. Click the green `Share` button and share the file with the client email associated with the Service Account.
 
-> Make sure the Service Account has edit access to this file or the bot will not be able to log data!
+   > Make sure the Service Account has edit access to this file or the bot will not be able to log data!
 
 ## Setup
 
@@ -26,37 +26,43 @@ A Discord bot that logs user emoji usage.
 
 2. Copy the `client_email` and `private_key` values in the credentials JSON file into your `.env` file:
 
-```
-CLIENT_EMAIL=client_email_value_here
-PRIVATE_KEY=private_key_value_here
-```
+   ```
+   CLIENT_EMAIL=client_email_value_here
+   PRIVATE_KEY=private_key_value_here
+   ```
 
-3. Download this widget and add it into the [src/widgets](https://github.com/peterthehan/create-discord-bot/tree/master/app/src/widgets) folder.
+3. Download this widget and move the `src-discord-emoji-log-bot` folder into the [src/widgets/](https://github.com/peterthehan/create-discord-bot/tree/master/app/src/widgets) folder created in step 1.
 
-> `npm i -s emoji-regex@^9.0.0 google-spreadsheet@^3.0.11` to install this widget's dependencies.
+   > `npm i -s emoji-regex@^9.2.2 google-spreadsheet@^^3.1.15` to install this widget's dependencies.
 
 4. Open [config.js](https://github.com/peterthehan/discord-emoji-log-bot/blob/master/config.js) to configure your own settings:
 
-```
-sheetId: "SHEET_ID",
-guildChannelMap: {
-  'GUILD_1_ID': {
-    channelsToIgnore: ['TEXT_CHANNEL_1_ID', 'TEXT_CHANNEL_2_ID']
-  },
-  // ...Add as many guild-channel mappings as you want.
-}
-```
+   ```js
+   module.exports = {
+     sheetId: "1CrvJ3Zuec5F7dF5ez_nPOJ5auZVfPrXz_W8GG2o0PZM",
+     guildChannelMap: {
+       "258167954913361930": {
+         channelsToIgnore: [],
+       },
+     },
+   };
+   ```
 
-- `sheetId` is the ID of the Google Sheets document found in the URL: [https://docs.google.com/spreadsheets/d/SHEET_ID_FOUND_HERE/edit](https://docs.google.com/spreadsheets/d/SHEET_ID_FOUND_HERE/edit).
+   Add as many rules as you want to configure for other servers.
 
-- `channelsToIgnore` are the channels the bot will not log user emoji usage from.
+   - `sheetId` is the id of the Google Sheets document found in the URL: [https://docs.google.com/spreadsheets/d/SHEET_ID_FOUND_HERE/edit](https://docs.google.com/spreadsheets/d/SHEET_ID_FOUND_HERE/edit).
+   - `guildChannelMap` is a key-value map between server id and channel ids.
+     - `channelsToIgnore` are the text channel ids the bot will not log user emoji usage from.
 
 5. `npm start` to run the bot.
 
 ## Design
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/peterthehan/assets/master/repositories/discord-emoji-log-bot/schema.png" />
+  <img
+    src="https://raw.githubusercontent.com/peterthehan/discord-emoji-log-bot/master/assets/schema.png"
+    alt="schema"
+  />
 </div>
 
 Visit for more help or information!
