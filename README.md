@@ -35,7 +35,7 @@ A Discord bot that logs user emoji usage.
 
    > `npm i -s emoji-regex@^9.2.2 google-spreadsheet@^^3.1.15` to install this widget's dependencies.
 
-4. Open [config.js](https://github.com/peterthehan/discord-emoji-log-bot/blob/master/config.js) to configure your own settings:
+4. Open [config.js](https://github.com/peterthehan/discord-emoji-log-bot/blob/master/src-discord-emoji-log-bot/config.js) to configure your own settings:
 
    ```js
    module.exports = {
